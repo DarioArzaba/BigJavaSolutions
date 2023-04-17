@@ -24,6 +24,11 @@
 <div align="center"> <p> Example of swing applications </p> </div>
 <img src="S1.png">
 
+## TODO
+
+* Write Javadocs for every class
+
+
 ## License
 
 Distributed under the [MIT License](https://mit-license.org/).
