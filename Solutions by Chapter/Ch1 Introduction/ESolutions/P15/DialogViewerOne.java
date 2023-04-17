@@ -13,7 +13,7 @@ public class DialogViewer {
 
 import javax.swing.JOptionPane;
 
-public class DialogViewer {
+public class DialogViewerOne {
 
 	public static void main(String[] args) {
 		JOptionPane.showMessageDialog(null, "Hello, Dario!");
