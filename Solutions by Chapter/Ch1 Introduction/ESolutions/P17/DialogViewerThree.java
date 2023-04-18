@@ -1,6 +1,9 @@
 /* 
 
-17.- Modify the program below so that the dialog continues with the message “My name is Hal! What would you like me to do?” Discard the user’s input and display a message such as: I'm sorry, Dave. I'm afraid I can't do that. Then replace Dave with the name that was provided by the user
+17.- Modify the program below so that the dialog continues with the message “My name is Hal! 
+	What would you like me to do?” Discard the user’s input and display a message such as: 
+	I'm sorry, Dave. I'm afraid I can't do that. 
+	Then replace Dave with the name that was provided by the user
 
 import javax.swing.JOptionPane;
 public class DialogViewer {
