@@ -1,0 +1,303 @@
+/* 
+
+1.- Which are the most commonly used number types in Java?
+
+A. Int, Long and Double
+
+*/
+/* 
+
+10.- If n is a positive number, what is (n / 10) % 10?
+
+A. If it is positive then it will be the second to last digit of n. Ej.
+	
+	n = 1729 expected (2) as a result
+	(1729/10) = 172 with 9 discarted.
+	172 % 10 = 2
+
+*/
+/*
+
+11.- Write statements to prompt for and read the user’s age using a Scanner variable named in.
+
+A.
+
+	Scanner in = new Scanner();
+	System.out.print("How old are you? ");
+	int age = in.nextInt();
+
+*/
+
+/* 
+
+12.- What is wrong with the following statement sequence?
+
+	System.out.print("Please enter the unit price: ");
+	double unitPrice = in.nextDouble();
+	int quantity = in.nextInt();
+
+A. The first two statements are correct but for the last one there is no prompt to enter the quantity value.
+
+*/
+
+/* 
+
+13.- What is problematic about the following statement sequence?
+
+	System.out.print("Please enter the unit price: ");
+	double unitPrice = in.nextInt();
+
+A. The second statement calls for an Int from the Scanner however the int value is being stored on a Double. This would be fine since Int values can be transformed into Doubles on the fly, however if the user enters a double value as intended then the Scanner will throw an error (input mismatch exception) since it expected an int value.
+
+*/
+
+/* 
+
+14.- What is problematic about the following statement sequence?
+	
+	System.out.print("Please enter the number of cans");
+	int cans = in.nextInt();
+
+A. In the first statement prompting for a value there is no space and colon at the end of the string. The program will run however the prompt and the input value will be wrongly formatted.
+
+*/
+/* 
+
+15.- What is the output of the following statement sequence?
+	
+	int volume = 10;
+	System.out.printf("The volume is %5d", volume);
+
+A.
+
+	The total volume is    10
+
+There are four spaces between is and 10.
+One from the string and three added before 10 to achive a field of width 5.
+
+*/
+
+/* 
+
+16.- Using the printf method, print the values of the integer variables bottles and cans so that the output looks like this:
+	
+	Bottles:       8
+	Cans:         24
+	
+The numbers to the right should line up. (You may assume that the numbers have at most 8 digits.)
+
+A.
+	
+	System.out.printf("Bottles: %8d\n", bottles);
+	System.out.printf("Cans: %8d\n", cans);
+
+*/
+/* 
+
+17.- Translate the pseudocode for computing the number of tiles and the gap width into Java.
+
+Pseudocode:
+
+	number of pairs = integer part of (total width - tile width) / (2 x tile width)
+	number of tiles = 1 + 2 x number of pairs
+	gap at each end = (total width - number of tiles x tile width) / 2
+
+A.
+
+	int pairs = (totalWidth - tileWidth) / (2 * tileWidth);
+	int tiles = 1 + (2 * pairs);
+	double gap = (totalWidth - (tiles * tileWidth)) / 2.0;
+	
+
+*/
+/* 
+
+18.- Suppose the architect specifies a pattern with black, gray, and white tiles, like this:
+
+B - G - W - G - B - G - W - G - B
+
+Again, the first and last tile should be black. How do you need to modify the algorithm?
+
+A. Now the series is of groups of four tiles G - W - G - B after the initial black tile. Therefore the new algorithm is:
+
+	number of groups = integer part of (total width - tile width) / (4 * tile width)
+	number of tiles = 1 + (4 * number of groups)
+	gap at each end = (total width - number of tiles x tile width) / 2
+
+*/
+/* 
+
+19.- A robot needs to tile a floor with alternating black and white tiles (Checkboard Pattern). Develop an algorithm that yields the color (0 for black, 1 for white), given the row and column number. Start with specific values for the row and column, and then generalize.
+
+A.
+	The color of the cell will depend only on whether the row and column numbers are even or odd. If both are even or odd it means it will be black (0) otherwise it will be (1)
+	
+	color = ((row%2) + (column %2)) % 2
+	
+*/
+/* 
+
+2.- Suppose you want to write a program that works with population data from various countries. Which Java data type should you use?
+
+A. For a single country you can use int, however the total population of the world is bigger than that so you would need a long. Technically you could also use a double since knowing the exact population of a country is not an exact known value at any given time.
+
+*/
+
+/* 
+
+20.- For a particular car, repair and maintenance costs in year 1 are estimated at $100; in year 10, at $1,500. Assuming that the repair cost increases by the same amount every year, develop pseudocode to compute the repair cost in year 3 and then generalize to year n.
+
+A.
+	Cost increased 1400 in 9 years therefore it is increasing 156 per year.
+	The repear in year 3 will be = 100 + (2 * 156)
+	The repear in year n = 100 + ( (n-1) * 156)
+
+*/
+/* 
+
+21.- The shape of a bottle is approximated by two cylinders of radius r1 and r2 and heights h1 and h2, joined by a cone section of height h3. Develop pseudocode to compute the volume of the bottle.
+
+A.
+
+	bottomVolume = Pi * (r1)^2 * h1
+	topVolume = Pi * (r2)^2 * h2
+	middleVolume = (Pi * ((r1)^2 + (r1 * r2) + (r2)^2) * h3) / 3 )
+	totalVolume = bottomVolume + topVolume + middleVolume
+
+*/
+/* 
+
+22.- What is the length of the string "Java Program"?
+
+A. 12
+
+*/
+
+/* 
+
+23.- Consider this string variable.
+	
+	String str = "Java Program";
+	
+Give a call to the substring method that returns the substring "gram".
+
+	String substring = str.substring(8);
+
+*/
+
+/* 
+
+24.- Use string concatenation to turn the string variable str from Self Check 23 into "Java Programming".
+
+	String str = "Java Program";
+	str = str + "ming";
+
+*/
+/* 
+
+25.- What does the following statement sequence print?
+	
+	String str = "Harry"; //Create Harry
+	int n = str.length(); //Get length of 5
+	String mystery = str.substring(0, 1) + str.substring(n - 1, n); //Add the first and last letter
+	System.out.println(mystery); //Print it
+
+A.
+	Hy
+
+*/
+/* 
+
+26.- Give an input statement to read a name of the form “John Q. Public”.
+
+A.
+
+	Scanner in = new Scanner();
+	System.out.print("What is your first name? ");
+	String firstName = in.next();
+	System.out.println();
+	System.out.print("What is your middle name? ");
+	String middleName = in.next();
+	System.out.println();
+	System.out.print("What is your last name? ");
+	String lastName = in.next();
+
+*/
+/* 
+
+3.- Which of the following initializations are incorrect, and why?
+
+	int dollars = 100.0;
+	double balance = 100;
+
+A. The first one has a number with a decimal point where it should have an integer number without one:
+
+	int dollars = 100;
+	or
+	double dollars = 100.0;
+	
+The second is correct even if we are inserting an integer value into a double because int can always be converted into a double on the fly.
+
+
+*/
+
+/* 
+
+4.- What is the difference between the following two statements?
+
+	final double CM_PER_INCH = 2.54;
+	public static final double CM_PER_INCH = 2.54;
+
+A. The first one is for a constant that can be used only for the methods inside the class and therefore every instance has its own copy, the second one is for a constant that can be used for every class since its public and is static so that it does not belong to any particular instance.
+
+*/
+/* 
+
+5.- What is wrong with the following statement sequence?
+	
+	double diameter = 4.0;
+	double circumference = 3.14 * diameter;
+
+A. There is nothing wrong with the first statement, in the second one we should replace 3.14 magic number for some descriptive constant, and also take note that 3.14 is usually fewer Pi digits that the ones needed for any usefull calculation.
+
+*/
+/* 
+
+6.- A bank account earns interest once per year. In Java, how do you compute the interest earned in the first year? Assume variables percent and balance of type double have already been declared.
+
+A.
+
+	double interest = ((balance * percent) / (100.0) );
+
+*/
+
+/* 
+
+7.- In Java, how do you compute the side length of a square whose area is stored in the variable area?
+
+A.
+
+	double sideLength = Math.sqrt(area);
+
+*/
+/* 
+
+8.- The volume of a sphere is given by the formula at right. If the radius is given by a variable radius of type double, write a Java expression for the volume.
+
+A.
+	//Volume sphere with radius
+	double volume = ((4.0 * Math.PI * Math.pow(radius,3)) / (3.0));
+
+*/
+
+
+/*
+
+9.- What is the value of 1729 / 100 and 1729 % 100?
+
+A.
+	17 since there are 17 100s inside 1729 with the 29 discarted since it is an integer division
+	29 since that is the reminder that in the integer division was discarted.
+
+*/
+

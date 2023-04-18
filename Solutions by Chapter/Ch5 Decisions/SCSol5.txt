@@ -1,0 +1,758 @@
+/* 
+
+1.- In some Asian countries, the number 14 is considered unlucky. Some building owners play it safe and skip both the thirteenth and the fourteenth floor. How would you modify the sample program to handle such a building?
+
+*/
+
+import java.util.Scanner;
+
+public class ElevatorSimulationPartTwo {
+	
+	public static void main(String[] args){
+		
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("Floor: ");
+		
+		int floor = in.nextInt();
+		
+		int actualFloor;
+		
+		if (floor == 13 || floor == 14){
+			actualFloor = 12; //Do Nothing
+		} else if (floor > 14) {
+			actualFloor = floor - 2;
+		}  else {
+			actualFloor = floor;
+		}
+		
+		System.out.println("The elevator will travel to the actual floor " + actualFloor);
+		
+		System.exit(0);
+		
+	}
+	
+}
+/* 
+
+10.- Give two ways of testing that a string str is the empty string.
+
+A.
+	if (str.equals("") && str.length() == 0){
+		System.out.println("Str is an Empty String.");
+	} else {
+		System.out.println("Str is not an Empty String.");
+	}
+
+
+*/
+/* 
+
+11.- What is the value of s.length() if s is
+	
+	a. the empty string ""?
+	b. the string " " containing a space?
+	c. null?
+
+A.
+
+	A) 0
+	B) 1
+	C) Error. You cannot obtain information such as length from a Null string.
+	(NullPointerException)
+
+*/
+/* 
+
+12. Which of the following comparisons are syntactically incorrect? Which of them are syntactically correct, but logically questionable?
+
+	String a = "1";
+	String b = "one";
+	double x = 1;
+	double y = 3 * (1.0 / 3);
+	
+	a. a == "1"
+	b. a == null
+	c. a.equals("")
+	d. a == b
+	e. a == x
+	f. x == y
+	g. x - y == null
+	h. x.equals(y)
+
+A.
+
+	A) Logically Questionable: The information inside Strings cannot be compared using the double equal sign, they need to use the Equals object method. This comparation will be true since both are String Objects but it will not take into consideration their text information.
+	B) Correct: You can compare a String with null using the double equal sign since null does not contain any information by definition. If the comparation is false then we will know that some information inside (a) exists.
+	C) Correct: You can compare the text information inside strings using the Equals object method. This comparation will be true if (a) is an empty String.
+	D) Logically Questionable: Same as A.
+	E) Syntactically Incorrect: Cannot compare objects from different data types (String and Double) using the double equal sign.
+	F) Logically Questionable: You can compare the information inside two Double numbers, however applying operations on a Double number creates very small round off errors that can make a number slightly different than another, even if we expect them to be mathematically the same. In this case it is preferable not to compare the result with a single number but a small range of them to catch the round off errors.
+	G) Syntactically Incorrect: The Double data type does not have a Null representation like the String data type does.
+	H) Syntactically Incorrect: The Equals method is not defined for Double data type like it is for Strings since it can use by default the double equal sign comparator.
+
+*/
+
+/* 
+
+13.- In a game program, the scores of players A and B are stored in variables scoreA and scoreB. Assuming that the player with the larger score wins, write an if/ else if/else sequence that prints out "A won", "B won", or "Game tied".
+
+A.
+
+	if (scoreA > scoreB) {
+		System.out.println("A won");
+	} else if (scoreA < scoreB) {
+		System.out.println("B won");
+	} else {
+		System.out.println("Game tied");
+	}
+
+*/
+
+/* 
+
+14.- Write a conditional statement with three branches that sets s to 1 if x is positive, to –1 if x is negative, and to 0 if x is zero.
+
+A.
+
+	if (x > 0) {
+		s = 1;
+	} else if (x < 0) {
+		s = -1;
+	} else {
+		s = 0;
+	}
+
+*/
+/* 
+
+15.- How could you achieve the task of Self Check 14 with only two branches?
+
+A. Initializing the value of (s) to one of the three posible outcomes.
+
+	s = 0;
+	if (x > 0) {
+		s = 1;
+	} else if (x < 0) {
+		s = -1;
+	}
+
+*/
+/* 
+
+16.- Beginners sometimes write statements such as the following:
+	
+	if (price > 100) {
+		discountedPrice = price - 20;
+	} else if (price <= 100) {
+		discountedPrice = price - 10;
+	}
+	
+Explain how this code can be improved.
+
+A.
+
+	if (price > 100) {
+		discountedPrice = price - 20;
+	} else {
+		discountedPrice = price - 10;
+	}
+
+We are testing only two possible states for price: above or below 100.
+If it is not above then it must be below.
+Therefore testing if the price is below is redundant after we know it is not above.
+We can delete the second test and only leave (else).
+
+*/
+/*
+
+17.- Suppose the user enters -1 into the earthquake program. What is printed?
+
+A.
+
+	The Richter scale does not contain negative values, so the user input must be incorrect. However the earthquake program allows for negative numbers since they fall below 4.5. This would mean a run time error since the input exceedes the expected range of inputs but does not generate an error and instead outputs the wrong answer (No destruction of buildings).
+
+*/
+/*
+
+18.- Suppose we want to have the earthquake program check whether the user entered a negative number. What branch would you add to the if statement, and where?
+
+A.
+
+if (richter >= 8.0) {
+	description = "Most structures fall";
+} else if (richter >= 7.0) {
+	description = "Many buildings destroyed";
+} else if (richter >= 6.0) {
+	description = "Many buildings considerably damaged, some collapse";
+} else if (richter >= 4.5) {
+	description = "Damage to poorly constructed buildings";
+} else if (richter >= 0) {
+	description = "No destruction of buildings";
+} else {
+	Error. Negative input.
+}
+
+*/
+
+/*
+
+19.- What is the amount of tax that a single taxpayer pays on an income of $32,000?
+
+A.
+
+	Since it is single and
+	Since its income is lower or equal than the RATE1_SINGLE_LIMIT of 32000
+	Therefore the tax will be equal to the RATE1 of 10 percent.
+	Meaning 3200
+
+*/
+/* 
+
+2.- Consider the following if statement to compute a discounted price:
+	
+	if (originalPrice > 100) {
+		discountedPrice = originalPrice - 20;
+	} else {
+		discountedPrice = originalPrice - 10;
+	}
+
+What is the discounted price if the original price is 95? 100? 105?
+
+A.
+	If original is (95) then it is lower then 100, therefore the discounted is 10 less, meaning 85.
+	If the original is (100) it is not equal to 100, therefore the discounted is 10 less, meaning 90.
+	If the original is (105) it is bigger than 100, therefore the discounted is 20 less, meaning 85.
+
+*/
+/*
+
+20.- Would that amount change if the first nested if statement changed from
+	
+	if (income <= RATE1_SINGLE_LIMIT)
+	to
+	if (income < RATE1_SINGLE_LIMIT)
+
+A.
+
+In the first case the tax amount would be:
+(rate1 * income) + tax2
+(0.10 * 32000) + 0 = 3200
+
+In the second case the taz amount would be:
+(rate1 * rate1limit) + (rate2 * (income - rate1limit)
+(0.10 * 32000) + (0.25 * (32000 - 32000)) = 3200
+
+Therefore the tax amount does not change.
+
+*/
+
+import java.util.Scanner;
+
+public class TaxProgramSimulator {
+	
+	public static void main(String[] args){
+		
+		final int SINGLE = 1;
+		final int MARRIED = 2;
+		final double RATE1 = 0.10;
+		final double RATE2 = 0.25;
+		final double RATE1_SINGLE_LIMIT = 32000;
+		final double RATE1_MARRIED_LIMIT = 64000;
+		
+		double income = 32000;
+		int status = 1;
+		
+		double tax1 = 0;
+		double tax2 = 0;
+		
+		if (status == SINGLE) {
+			if (income <= RATE1_SINGLE_LIMIT) {
+				tax1 = RATE1 * income;
+			} else {
+				tax1 = RATE1 * RATE1_SINGLE_LIMIT;
+				tax2 = RATE2 * (income - RATE1_SINGLE_LIMIT);
+			}
+		} else {
+			if (income <= RATE1_MARRIED_LIMIT) {
+				tax1 = RATE1 * income;
+			} else {
+				tax1 = RATE1 * RATE1_MARRIED_LIMIT;
+				tax2 = RATE2 * (income - RATE1_MARRIED_LIMIT);
+			}
+		}
+		
+		double taxResult = tax1 + tax2;
+		
+		System.out.println("Tax: " + taxResult );
+		
+		System.exit(0);
+		
+	}
+	
+}
+/*
+
+21.- Suppose Harry and Sally each make $40,000 per year. Would they save taxes if they married?
+
+A.
+	
+	Since they make the same their individual tax for both is 5200
+	If they married theyr tax would be of 10400.
+	In reality higher earning taxpayers tend to pay higher taxes when they marry.
+	This is known as marriage penalty.
+
+*/
+/*
+
+22.- How would you modify the TaxCalculator.java program in order to check that the user entered a correct value for the marital status (i.e., Y or N)?
+
+*/
+
+public class TaxCalculatorTester  {
+	
+	public static void main(String[] args) {
+		
+		Scanner in = new Scanner(System.in);
+		
+		System.out.print("Please enter your income: ");
+		double income = in.nextDouble();
+		
+		System.out.print("Are you married? (Y/N) ");
+		String input = in.next();
+		
+		int status;
+		
+		if (input.equals("Y")) {
+			status = TaxReturn.MARRIED;
+		} else if (maritalStatus.equals("N")) {
+			status = TaxReturn.SINGLE;
+		} else {
+			System.out.println( "Error: Please answer Y or N.");
+		}
+		
+		TaxReturn aTaxReturn = new TaxReturn(income, status);
+		
+		System.out.println("Tax: " + aTaxReturn.getTax());
+		
+		System.exit(0);
+		
+	}
+}
+/*
+
+23.- Some people object to higher tax rates for higher incomes, claiming that you might end up with less money after taxes when you get a raise for working hard. What is the flaw in this argument?
+
+A.
+
+	This only applies to the people inside the higher bracket income. For most people higher income tax is in practice negligible, meaning that even when applied you will keep most of your money. Until the money you earn overall gets so high you should not be worried about money higher income tax should not be a problem.
+
+*/
+/*
+
+24.- Draw a flowchart for a program that reads a value temp and prints “Frozen” if it is less than zero.
+
+A.
+
+Requires Drawing.
+
+*/
+
+/*
+
+25.- What is wrong with the flowchart at right?
+
+A.
+
+Requires Drawing.
+
+*/
+/*
+
+26.- How do you fix the flowchart of Self Check 25?
+
+A.
+
+Requires Drawing.
+
+*/
+/*
+
+27.- Draw a flowchart for a program that reads a value x. If it is less than zero, print “Error”. Otherwise, print its square root.
+
+A.
+
+Requires Drawing.
+
+*/
+
+/*
+
+28.- Draw a flowchart for a program that reads a value temp. If it is less than zero, print “Ice”. If it is greater than 100, print “Steam”. Otherwise, print “Liquid”.
+
+A.
+
+Requires Drawing.
+
+*/
+/*
+
+29.- Using Figure 1 on page 179 as a guide, follow the process described in this section to design a set of test cases for the ElevatorSimulation.java program in Section 5.1.
+
+A.
+
+Test Case    |     Expected Outcome      |   Comment
+12					12						Below 13
+14					13						Above 13
+13					?						Undefined.
+
+
+*/
+/* 
+
+3. Compare this if statement with the one in Self Check 2:
+	
+	
+	if (originalPrice > 100) {
+		discountedPrice = originalPrice - 20;
+	} else {
+		discountedPrice = originalPrice - 10;
+	}
+	
+	The above with:
+	
+	if (originalPrice < 100) {
+		discountedPrice = originalPrice - 10;
+	} else {
+		discountedPrice = originalPrice - 20;
+	}
+	
+A.
+
+	Given the same original price as imput they will produce the same value.
+	The difference lies just when the original price is 100, in the first one the discount price will be 90 and in the second one it will be 80.
+	
+*/
+/*
+
+30.- What is a boundary test case for the algorithm in How To 5.1 on page 190? What is the expected output?
+
+A. A boundary test case would be if the price of the item is 128. The 16 porcent discount should apply since the price is at least 128. With the discount of 20.48 applied correctly the expected output should be 107.52.
+
+*/
+/*
+
+31.- Using Figure 4 on page 194 as a guide, follow the process described in Section 5.6 to design a set of test cases for the Earthquake.java program in Section 5.3.
+
+A.
+
+Test Case 	|	Expected Output 				|	Comment
+9				Most structures fall
+7.5 			Many buildings destroyed
+6.5 			Many buildings destroyed
+5 				Damage to poorly constructed
+3 				No destruction
+8.0 			Most structures fall                Boundary case.
+-1 				No destruction						Undefined case-
+
+*/
+
+/*
+
+32.- Suppose you are designing a part of a program for a medical robot that has a sensor returning an x- and y-location (measured in cm). You need to check whether the sensor location is inside the circle, outside the circle, or on the boundary (specifically, having a distance of less than 1 mm from the boundary). Assume the circle has center (0, 0) and a radius of 2 cm. Give a set of test cases.
+
+A.
+
+Test Case 	|	Expected Ouput 		|	 Comment
+(0.5, 0.5) 		inside
+(4, 2) 			outside
+(0, 2) 			on the boundary 		Exactly on the boundary
+(1.414, 1.414)  on the boundary 		Close to the boundary
+(0, 1.9) 		inside 					Not less than 1 mm from the boundary
+(0, 2.1) 		outside 				Not less than 1 mm from the boundary
+
+*/
+/*
+
+33.- Suppose x and y are two integers. How do you test whether both of them are zero?
+
+A. (x == 0) && (y == 0)
+
+*/
+/*
+
+34.- How do you test whether at least one of them is zero?
+
+A. (x == 0) || (y == 0)
+
+*/
+
+/*
+
+35. How do you test whether exactly one of them is zero?
+
+A. ((x == 0) && (y != 0)) || ((y == 0) && (x != 0))
+
+*/
+/*
+
+36. What is the value of (!!frozen)?
+
+A. Double negation will cancel out. It will have the same value as (frozen).
+
+*/
+/*
+
+37.- What is the advantage of using the type boolean rather than strings "false"/"true" or integers 0/1?
+
+A. Boolean data type by definition assures that there can only be two possible values, however we know strings and integers can have multiple values, if by any chance they are modified unwanted comparations could be made.
+
+*/
+/*
+
+38.- In the ElevatorSimulation2 program, what is the output when the input is
+	
+	a. 100?
+	b. –1?
+	c. 20?
+	d. thirteen?
+
+A.
+
+	A) Error. The floor must be between 1 and 20.
+	B) Error. The floor must be between 1 and 20.
+	C) 19.
+	D) Error. The input is not an integer.
+
+*/
+
+import java.util.Scanner;
+
+public class ElevatorSimulation2 {
+	
+	public static void main(String[]args) {
+		
+		Scanner in=new Scanner(System.in);
+		
+		System.out.print("Floor: ");
+		
+		if(in.hasNextInt()) {
+			
+			int floor=in.nextInt();
+			
+			if(floor==13) {
+				System.out.println("Error: There is no thirteenth floor.");
+			} else if(floor<=0||floor>20) {
+				System.out.println("Error: The floor must be between 1 and 20.");
+			} else {
+				int actualFloor=floor;
+				if(floor>13) {
+					actualFloor=floor-1;
+				}
+				System.out.println("The elevator will travel to the actual floor "  + actualFloor);
+			}
+			
+		} else {
+			System.out.println("Error: Not an integer.");
+		}
+		
+		System.exit(0);
+		
+	}
+}
+/*
+
+39.- Your task is to rewrite lines 19–26 of the ElevatorSimulation2 program so that there is a single if statement with a complex condition. What is the condition?
+
+	if (. . .) {
+		System.out.println("Error: Invalid floor number");
+	}
+
+A. (floor == 13 || floor <= 0 || floor > 20)
+
+*/
+
+import java.util.Scanner;
+
+public class ElevatorSimulation2 {
+	
+	public static void main(String[]args) {
+		
+		Scanner in=new Scanner(System.in);
+		
+		System.out.print("Floor: ");
+		
+		if(in.hasNextInt()) {
+			
+			int floor=in.nextInt();
+			
+			if( floor == 13 || floor <= 0 || floor > 20 ) {
+				System.out.println("Error: Invalid floor number. ");
+			} else {
+				int actualFloor=floor;
+				if(floor>13) {
+					actualFloor=floor-1;
+				}
+				System.out.println("The elevator will travel to the actual floor "  + actualFloor);
+			}
+			
+		} else {
+			System.out.println("Error: Not an integer.");
+		}
+		
+		System.exit(0);
+		
+	}
+}
+/* 
+
+4.- Consider the following statements to compute a discounted price:
+	
+	discountedPrice = originalPrice;
+	if (originalPrice > 100) {
+		discountedPrice = originalPrice - 10;
+	}
+	
+What is the discounted price if the original price is 95? 100? 105?
+
+A.
+	If the original is 95 then it is lower than 100 and therefore it stays the same.
+	If the original is 100 then it is lower than 100 and therefore it stays the same.
+	If the original is 105 then it is bigger than 100 and therefore it will be minus 10, meaning 95.
+
+*/
+/*
+
+40.- In the Sherlock Holmes story “The Adventure of the Sussex Vampire”, the inimitable detective uttered these words:
+
+“Matilda Briggs was not the name of a young woman, Watson, … It was a ship which is associated with the giant rat of Sumatra, a story for which the world is not yet prepared.”
+
+Over a hundred years later, researchers found giant rats in Western New Guinea, another part of Indonesia. Suppose you are charged with writing a program that processes rat weights. It contains the statements
+		
+		System.out.print("Enter weight in kg: ");
+		double weight = in.nextDouble();
+		
+What input checks should you supply? When processing inputs, you want to reject values that are too large. But how large is too large? These giant rats, found in Western New Guinea, are about five times the size of a city rat.
+
+A.
+
+	Check that the input is a number using hasNextDouble.
+	Check that the weight is more than 0 since it must have a positive weight.
+	A regular rat weighs 0.2 kg.
+	The weight of the New Guinea rat must be arround 2 kg
+	Using the next decimal place we can say that any rat weight must be less than 10 kg.
+
+The checks would be something like:
+
+	if (in.hasNextDouble()) {
+		double weight = in.nextDouble();
+		if (weight < 0) {
+	 		System.out.println("Error: Weight cannot be negative.");
+		} else if (weight > 10) {
+			System.out.println("Error: Weight > 10 kg.");
+		} else {
+			//Process valid weight.
+		}
+	} else {
+		System.out.print("Error: Not a number");
+	}
+
+*/
+
+/*
+
+41.- Run the following test program and supply inputs 2 and "three" at the prompts. What happens? Why?
+
+	import java.util.Scanner
+	public class Test {
+		public static void main(String[] args) {
+	
+			Scanner in = new Scanner(System.in);
+	
+			System.out.print("Enter an integer: ");
+			int m = in.nextInt();
+	
+			System.out.print("Enter another integer: ");
+			int n = in.nextInt();
+	
+			System.out.println(m + " " + n);
+	
+		}
+	}
+
+A. Since we are assuming that the input will be a number and we have not included input validation in the case that the user inputs another value such as text then (n) will not be initialiced becouse the user intered the String "three" instead of the numerical value of (3). The program will terminate with an Error (InputMismatchException) without reaching the last statement.
+
+*/
+/* 
+
+5.- The variables fuelAmount and fuelCapacity hold the actual amount of fuel and the size of the fuel tank of a vehicle. If less than 10 percent is remaining in the tank, a status light should show a red color; otherwise it shows a green color. Simulate this process by printing out either "red" or "green".
+
+A.
+
+	if (fuelAmount < (0.10 * fuelCapacity)) {
+		System.out.println("red");
+	} else {
+		System.out.println("green");
+	}
+
+*/
+/* 
+
+6. Which of the following conditions are true, provided a is 3 and b is 4?
+	
+	a. a + 1 <= b
+	b. a + 1 >= b
+	c. a + 1 != b
+	
+A.
+
+	A) Is 4 lower or equal to 4? True, it is equal.
+	B) Is 4 bigger or equal to 4? True, it is equal.
+	C) Is 4 different to 4? False, they are equal.
+	
+*/
+/* 
+
+7. Give the opposite of the condition
+
+	floor > 13
+	(Is floor bigger and different than 13?)
+
+A.
+
+	floor <= 13
+	(Is floor lower or equal than 13?)
+
+
+*/
+/* 
+
+8. What is the error in this statement?
+	
+	if (scoreA = scoreB) {
+		System.out.println("Tie");
+	}
+
+A. In the condition there is a single (=) sign, thereforescoreA and scoreB are not being compared, the value of scoreB is just being asigned to scoreA. To compare them we need to use a double (==) equal sign.
+
+*/
+/* 
+
+9.- Supply a condition in this if statement to test whether the user entered a Y:
+
+	System.out.println("Enter Y to quit.");
+	String input = in.next();
+	if (. . .) {
+		System.out.println("Goodbye.");
+	}
+	
+A.
+
+	System.out.println("Enter Y to quit.");
+	String input = in.next();
+	if (input.equals("Y")) {
+		System.out.println("Goodbye.");
+	}
+
+*/
+
