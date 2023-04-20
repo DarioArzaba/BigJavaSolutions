@@ -17,7 +17,7 @@ public class TwoSquareViewer {
 		window.setTitle("Two Squares");
 		Color colorFondo = new Color(204, 255, 204);
 		window.getContentPane().setBackground(colorFondo);
-		TwoSquareComponent component = new TwoSquareComponent();
+		TwoSquareComponentCenter component = new TwoSquareComponentCenter();
 		window.add(component);
 		window.setVisible(true);
 	}

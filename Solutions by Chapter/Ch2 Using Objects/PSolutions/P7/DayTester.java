@@ -1,6 +1,10 @@
 /* 
 
-7.- Using the Day class of Worked Example 2.1, write a program that generates a Day object representing February 28 of this year, and three more such objects that represent February 28 of the next three years. Advance each object by one day, and print each object. Also print the expected values.
+7.- Using the Day class of Worked Example 2.1, write a program that generates a Day object 
+	representing February 28 of this year, and three more such objects 
+	that represent February 28 of the next three years. 
+	Advance each object by one day, and print each object. 
+	Also print the expected values.
 
 */
 
